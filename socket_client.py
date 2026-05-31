@@ -1,7 +1,7 @@
 import socket
-#创建客户端对象
-client=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
-client.connect(('127.0.0.1',8888))
-#向服务端发送 一个哇是3字节，1000个就是三千字节
-date="哇"*1000
-client.send(date.encode('utf-8'))
+#creat a client socket
+client_pc=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+#connect the server_pc
+client_pc.connect(("127.0.0.1",5381))
+#send some date to the server_pc
+count=client_pc.send("你好，tcp/ip".encode("utf-8"))
