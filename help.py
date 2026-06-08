@@ -1,2 +1,2 @@
 import socket
-help(socket.socket.getsockname)
+help(socket.socket.send)

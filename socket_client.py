@@ -1,10 +1,15 @@
 import socket
-#creat a client socket
-client_pc=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
-#connect the server_pc
-client_pc.connect(("127.0.0.1",5381))
-#show the address and port
-print(f"客户端1的IP和端口号是{client_pc.getsockname()}")
-#send some date to the server_pc
-count=client_pc.send("你好啊，tcp/ip".encode("utf-8"))
-print(f"客户端1一共发送{count}字节")
+client_sock=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+client_sock.connect(("127.0.0.1",9090))
+while True:
+    send_msg=input("请输入发送的消息")
+    if send_msg=="q":
+        break
+
+    client_sock.send(send_msg.encode("utf-8"))
+
+    echo_date=client_sock.recv(1024)
+    print(f"服务器发送来的数据是:{echo_date.decode("utf-8")}")
+
+client_sock.close()
+print("客户端已经关闭")
