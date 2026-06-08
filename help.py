@@ -1,2 +1,3 @@
 import socket
-help(socket.socket.send)
+import threading
+help(threading.Thread)
